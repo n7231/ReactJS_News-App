@@ -1,4 +1,4 @@
-import React , {Component, useState, useEffect} from 'react' ;
+import React , {useState, useEffect} from 'react' ;
 
 
 const App = () => {
@@ -10,6 +10,7 @@ const fetchNews = () => {
   fetch ('http://hn.algolia.com/api/v1/search?query=react')
   .then (result => result.json( ))
   .then (data => setNews(data.hits))
+  //.then (data => console.log(data))
   .catch (error => console.log(error));
 };
 useEffect(() => {
@@ -19,7 +20,7 @@ useEffect(() => {
 return(
   <div>
     <h2>News</h2>
-    {news.map((n,i) => (<p key={i}>{n.tittle}</p>))}
+    {news.map((n,i) => (<p key={i}>{n.title}</p>))}
   </div>
 )
 };
